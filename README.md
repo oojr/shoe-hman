@@ -8,7 +8,7 @@ Installation
 Make sure you have nodejs installed
 
 ```sh
-git clone [git-repo-url] shoe-hman
+git clone https://github.com/oojr/shoe-hman.git
 cd shoe-hman
 npm install
 node web.js
