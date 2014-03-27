@@ -5,8 +5,8 @@ angular.module('hman', [])
   .controller('GameCtrl', function ($scope, $http) {
  
 
-  var MAX_INCORRECT_GUESSES = 10
-    , GAME_OVER_MESSAGE = "Sorry! You've lost the game. Please start a new one";
+  var MAX_INCORRECT_GUESSES = 10 ,
+      GAME_OVER_MESSAGE = "Sorry! You've lost the game. Please start a new one";
 
   $scope.characters = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G',
