@@ -1,0 +1,20 @@
+'use strict';
+
+
+angular.module('beth', ['ngRoute'])
+  .config(function ($routeProvider, $locationProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'partials/main.html',
+        controller: 'MainCtrl'
+      }).
+      when('/login',{
+        templateUrl: 'partials/login.html',
+        controller: 'LoginCtrl'
+      });
+
+
+    $locationProvider.html5Mode(true);
+  })
+
+

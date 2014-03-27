@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="hman">
+<head>
+	<title>Angular Hangman</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/hangman.css"></head>
+	<script src="js/angular.js"></script>
+	<script src="js/app.js"></script>
+<body>
+	<div class="container" ng-cloak ng-controller="GameCtrl">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h1>
+						Shoobx Hangman
+						<small style="color:white">by Olajide</small>
+					</h1>
+				</div>
+
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<button ng-click="startNew()" class="btn btn-clear">New game</button>
+				<button ng-click="showAnswer()" ng-show="lostGame()" class="btn btn-clear">Show answer</button>
+
+			</div>
+			<div class="col-md-9">
+				<div id="west" ng-show="incorrectGuesses > 0">
+				<div id="ground">
+					<div id="string"></div>
+					<div id="hangman">
+						<img src="images/head.png" id="head" ng-show="incorrectGuesses >= 1"/>
+						<img src="images/body.png" id="body" ng-show="incorrectGuesses >= 2"/>
+						<img src="images/right_arm.png" id="right_arm" ng-show="incorrectGuesses >= 3"/>
+						<img src="images/left_arm.png" id="left_arm" ng-show="incorrectGuesses >= 4"/>
+						<img src="images/right_leg.png" id="right_leg" ng-show="incorrectGuesses >= 5"/>
+						<img src="images/left_leg.png" id="left_leg" ng-show="incorrectGuesses >= 6"/>
+						<img src="images/head2.png" id="head" ng-show="incorrectGuesses >= 7"/>
+						<img src="images/body2.png" id="body" class="top-layer" ng-show="incorrectGuesses >= 8"/>
+						<img src="images/right_arm2.png" id="right_arm" ng-show="incorrectGuesses >= 9"/>
+						<img src="images/left_arm2.png" id="left_arm" ng-show="incorrectGuesses >= 9"/>
+						<img src="images/right_leg2.png" id="right_leg" ng-show="incorrectGuesses >= 10"/>
+						<img src="images/left_leg2.png" id="left_leg" ng-show="incorrectGuesses >= 10"/></div>
+
+				</div>
+			</div>
+			<div id="east" ng-show="newGame">
+				<div id="hint">
+					<span>Hint: It's a country</span>
+				</div>
+				<div id="word">
+					<span ng-repeat="char in word track by $index" ng-class="{spacer:checkEmptyChar(char), placeholder:!checkEmptyChar(char)}">{{char}}</span>
+				</div>
+				<div id="characters">
+					<span ng-repeat="char in characters track by $index" ng-click="checkGuess(char)" ng-class="{disabled: usedChars.indexOf(char) != -1}" class="character">{{char}}</span>
+				</div>
+				<div id="answer" ng-show="correctAnswer">
+					<span>{{correctAnswer}}</span>
+				</div>
+			</div>
+			</div>
+
+
+
+		</div>
+		<div id="stage">
+			
+		</div>
+		
+	</div>
+	
+</body>
+</html>
