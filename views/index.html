@@ -66,7 +66,7 @@
 					<span ng-repeat="char in characters track by $index" ng-click="checkGuess(char)" ng-class="{disabled: usedChars.indexOf(char) != -1}" class="character">{{char}}</span>
 				</div>
 				<div id="answer" ng-show="correctAnswer">
-					<h4 ng-class="{'animated bounceInRight': correctAnswer}">Correct Answer: {{correctAnswer}}</h4>
+					<h4 ng-class="{'animated bounceInLeft': correctAnswer}">Correct Answer: {{correctAnswer}}</h4>
 				</div>
 			</div>
 			</div>
