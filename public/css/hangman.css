@@ -127,8 +127,7 @@ body {
 }
 #east {
   position: absolute;
-  left: 400px;
-  right: 200px;
+  left: 300px;
   top: 20px;
 }
 #east #hint {
