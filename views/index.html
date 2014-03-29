@@ -29,7 +29,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<button ng-click="startNew()" class="btn btn-clear">New game</button>
+				<button ng-click="startNew()" id="new-button" class="btn btn-clear">New game</button>
 				<button ng-click="showAnswer()" ng-show="lostGame()" class="btn btn-clear">Show answer</button>
 
 				<p class="score"> Wins <span class="badge">{{$storage.hman.wins}}</span> Loses <span class="badge">{{$storage.hman.loses}}</span></p>

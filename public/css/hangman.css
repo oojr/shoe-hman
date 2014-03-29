@@ -33,6 +33,14 @@ body {
   background-color: #fff;
 
 }
+.btn-clear:focus{
+  color: #fff;
+  background-color: transparent;
+  border-color: #fff;
+  border: 2px solid;
+
+}
+
 .game-over{
   color: black;
 }

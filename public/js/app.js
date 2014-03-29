@@ -2,7 +2,7 @@
 
 
 angular.module('hman', ['ui.bootstrap', 'ngStorage', 'ngAnimate'])
-  .controller('GameCtrl', function ($scope, $http, $modal, $localStorage) {
+  .controller('GameCtrl', function ($scope, $http, $modal, $localStorage, $element) {
 
   	$scope.$storage = $localStorage.$default({           
                           hman: {"wins":0, "loses":0}                             
@@ -39,6 +39,7 @@ angular.module('hman', ['ui.bootstrap', 'ngStorage', 'ngAnimate'])
       $scope._initGameData();
       $scope.word = data.word;
       $scope.newGame = true;
+      document.getElementById('new-button').blur();
     })
   }
 
