@@ -1,17 +1,25 @@
 body {
   background: #2980b9;
-  font-family: Arial;
-  font-size: 12px;
+  font-family: 'Roboto';
   color: #fff;
-  
-  
 }
+
 .btn-clear {
   color: #fff;
   background-color: transparent;
   border-color: #fff;
   border: 2px solid;
 
+}
+.badge{
+  background-color: #3498DB;
+}
+.score{
+  margin-top: 15px;
+  
+}
+.answer.ng-enter{
+   font-size: 18px;
 }
 .btn-modal{
   color: #2980b9;

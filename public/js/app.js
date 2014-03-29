@@ -1,10 +1,13 @@
 'use strict';
 
 
-angular.module('hman', ['ui.bootstrap'])
-  .controller('GameCtrl', function ($scope, $http, $modal) {
- 
-  //create 10 piece hangman 
+angular.module('hman', ['ui.bootstrap', 'ngStorage', 'ngAnimate'])
+  .controller('GameCtrl', function ($scope, $http, $modal, $localStorage) {
+
+  	$scope.$storage = $localStorage.$default({           
+                          hman: {"wins":0, "loses":0}                             
+                       });
+    
 
   var MAX_INCORRECT_GUESSES = 10,
       GAME_OVER_MESSAGE = "Sorry! You've lost the game. Please start a new one";
@@ -21,6 +24,7 @@ angular.module('hman', ['ui.bootstrap'])
     $scope.newGame = false;
     $scope.incorrectGuesses = 0;
     $scope.usedChars = [];
+    $scope.gamePlayed = false;
     $scope.correctAnswer = '';
   }
    
@@ -67,9 +71,16 @@ angular.module('hman', ['ui.bootstrap'])
 
 
       setTimeout(function() {
-      	if(data.win){
-      	$scope._alertYouWin();
+      	if(data.win && !$scope.gamePlayed){
+      	  $localStorage.hman.wins += 1
+      	  $scope.gamePlayed = true;
+      	  $scope._alertYouWin();
          }
+        if($scope.lostGame() && !$scope.gamePlayed){
+        	$localStorage.hman.loses +=1;
+        	$scope.gamePlayed = true;
+
+        }
         if ($scope.lostGame()) {
           $scope._alertGameOver();
         }

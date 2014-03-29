@@ -11,7 +11,10 @@ exports.getRandom = function(req, res) {
       var words = content.split('\n')
         , randomWord = words[_.random(0, words.length-1)].toUpperCase()
         , masqueradedWord = masquerade(randomWord)
+        , hasSpace = 0
         , letters = {};
+
+
 
       Object.size = function(obj) {
         var size = 0;
@@ -25,18 +28,25 @@ exports.getRandom = function(req, res) {
       req.session.word = randomWord;
 
       req.session.incorrectGuesses = 0;
-      for(var i= 0; i < randomWord.length; i++){
-        
-           l = randomWord.charAt(i);
+
+      //Count the unique letters 
+
+
+      for(var i = 0; i < randomWord.length; i++){
+           if(randomWord.charAt(i) != " "){
+           	 l = randomWord.charAt(i);
+           }
+           
            letters[l] = (isNaN(letters[l]) ? 1 : letters[l] + 1)
 
 
       }
-      req.session.remainingChars = Object.size(letters);
+      
+      req.session.remainingChars = Object.size(letters) - hasSpace;
       req.session.revealedWord = masqueradedWord;
 
       res.json({word: masqueradedWord});
-    }
+    }; 
   })
 }
 

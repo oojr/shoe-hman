@@ -2,10 +2,16 @@
 <html ng-app="hman">
 <head>
 	<title>Angular Hangman</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/hangman.css"></head>
+	<link rel="stylesheet" href="css/hangman.css">
+	<link rel="stylesheet" href="css/animate.css">
 	<script src="js/angular.js"></script>
+	<script src="js/ngStorage.min.js"></script>
+	<script src="js/angular-animate.min.js"></script>
+	<script src="js/ui-bootstrap-tpls.min.js"></script>
 	<script src="js/app.js"></script>
+	</head>
 <body>
 	<div class="container" ng-cloak ng-controller="GameCtrl">
 		<div class="row">
@@ -15,6 +21,7 @@
 						Shoobx Hangman
 						<small style="color:white">by Olajide</small>
 					</h1>
+
 				</div>
 
 			</div>
@@ -24,6 +31,8 @@
 			<div class="col-md-3">
 				<button ng-click="startNew()" class="btn btn-clear">New game</button>
 				<button ng-click="showAnswer()" ng-show="lostGame()" class="btn btn-clear">Show answer</button>
+
+				<p class="score"> Wins <span class="badge">{{$storage.hman.wins}}</span> Loses <span class="badge">{{$storage.hman.loses}}</span></p>
 
 			</div>
 			<div class="col-md-9">
@@ -57,7 +66,7 @@
 					<span ng-repeat="char in characters track by $index" ng-click="checkGuess(char)" ng-class="{disabled: usedChars.indexOf(char) != -1}" class="character">{{char}}</span>
 				</div>
 				<div id="answer" ng-show="correctAnswer">
-					<span>{{correctAnswer}}</span>
+					<h4 ng-class="{'animated bounceInRight': correctAnswer}">Correct Answer: {{correctAnswer}}</h4>
 				</div>
 			</div>
 			</div>
@@ -66,10 +75,12 @@
 
 		</div>
 		<div id="stage">
+		 
 			
 		</div>
 		
 	</div>
+
 	
 </body>
 </html>
