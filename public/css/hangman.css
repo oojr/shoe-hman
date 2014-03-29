@@ -13,12 +13,52 @@ body {
   border: 2px solid;
 
 }
+.btn-modal{
+  color: #2980b9;
+  background-color: transparent;
+  border-color: #2980b9;
+  border: 2px solid;
+
+}
 .btn-clear:hover{
   color:#2980b9;
   background-color: #fff;
 
 }
-
+.game-over{
+  color: black;
+}
+.action_button {
+  background: #555;
+  padding: 7px 13px;
+  border: 1px solid #f67b0e;
+  border: 1px solid rgba(0,0,0,0.4);
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  font-family: inherit;
+  border-radius: 5px;
+  background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.2)));
+  background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+  box-shadow: 0 1px 0 0 #999 inset;
+  margin: 0 2px;
+}
+.action_button: hover {
+  background-color: #444;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+.action_button: active {
+  position: relative;
+  top: 1px;
+}
+#forkme {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 #stage {
   overflow: hidden;
 }

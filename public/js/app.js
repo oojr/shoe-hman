@@ -1,11 +1,12 @@
 'use strict';
 
 
-angular.module('hman', [])
-  .controller('GameCtrl', function ($scope, $http) {
+angular.module('hman', ['ui.bootstrap'])
+  .controller('GameCtrl', function ($scope, $http, $modal) {
  
+  //create 10 piece hangman 
 
-  var MAX_INCORRECT_GUESSES = 10 ,
+  var MAX_INCORRECT_GUESSES = 10,
       GAME_OVER_MESSAGE = "Sorry! You've lost the game. Please start a new one";
 
   $scope.characters = [
@@ -68,7 +69,7 @@ angular.module('hman', [])
       setTimeout(function() {
       	if(data.win){
       	$scope._alertYouWin();
-      }
+         }
         if ($scope.lostGame()) {
           $scope._alertGameOver();
         }
@@ -79,15 +80,19 @@ angular.module('hman', [])
   $scope.lostGame = function() {
     return $scope.incorrectGuesses >= MAX_INCORRECT_GUESSES
   }
-  $scope.wonGame = function(){
 
-  }
 
   $scope._alertGameOver = function() {
-    alert(GAME_OVER_MESSAGE);
+       $modal.open({
+           templateUrl: 'tpls/gameover.html',
+           controller: 'ModalInstanceCtrl'
+       });
   }
   $scope._alertYouWin = function(){
-  	alert("You Win");
+  	   $modal.open({
+           templateUrl: 'tpls/win.html',
+           controller: 'ModalInstanceCtrl'
+       });
   }
 
   $scope.showAnswer = function() {
@@ -96,10 +101,16 @@ angular.module('hman', [])
       url: '/answer'
     })
     .success(function(data, status, headers, config) {
-      // TO BE IMPLEMENTED
+      
       $scope.correctAnswer = data.answer;
     })
   }
+
+}).controller('ModalInstanceCtrl', function ($scope, $modalInstance){
+	$scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+  };
+
 
 })
 
